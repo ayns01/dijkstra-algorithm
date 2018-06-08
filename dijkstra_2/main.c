@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define INF 10000
+#define INF 3200
 #define TRUE 1
 #define FALSE 0
 #define MAX_STR 256
@@ -152,7 +152,7 @@ int main(int argc, const char * argv[]) {
         if(source == p->name) {
             p->cost = 0;
         }
-        p->visited = 0;
+        p->visited = FALSE;
         p->from = NULL;
         p->edge = NULL;
         p->next = NULL;
@@ -215,7 +215,7 @@ int main(int argc, const char * argv[]) {
         targetnode = NULL;
         pp = head;
         while(pp != NULL) {
-            if (pp->cost < min && pp->visited==0) {
+            if (pp->cost < min && pp->visited==FALSE) {
                 min = pp->cost;
                 targetnode = pp;
             }
@@ -225,7 +225,7 @@ int main(int argc, const char * argv[]) {
         if(targetnode == NULL) {
             pp = head;
             while(1) {
-                if (pp->visited==0) {
+                if (pp->visited==FALSE) {
                     targetnode = pp;
                     break;
                 }
@@ -258,7 +258,7 @@ int main(int argc, const char * argv[]) {
         /*
          change visited flag
         */
-        targetnode->visited = 1;
+        targetnode->visited = TRUE;
         
         visitednum++;
         if(visitednum == n) {
