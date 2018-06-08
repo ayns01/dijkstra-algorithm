@@ -47,13 +47,15 @@ int main(int argc, const char * argv[]) {
     
     char *strnode = getNodes();
     char *gnode = NULL;
-    //split(strnode, gnode);
     char *here = NULL;
     char *str_work = NULL;
     int last = 0;
     int visitednum = 0;
     int totalcost = 0;
     
+    /*
+     sprit given node
+     */
     str_work = (char *)malloc(sizeof(char) * (strlen(strnode) + 1));
     strcpy(str_work, strnode);
     gnode = (char *)malloc(sizeof(char) * MAX_WORD);
@@ -75,13 +77,12 @@ int main(int argc, const char * argv[]) {
     gnode = here;
     
     /*
-     sprit path
+     sprit given path
     */
     char *stredges = getEdges();
     char *first = NULL;
     char *second = NULL;
     int  *value = 0;
-    //splitpath(stredges, first, second, value);
     char *str_copy = NULL;
     char *here_f = NULL;
     char *here_s = NULL;
@@ -97,17 +98,18 @@ int main(int argc, const char * argv[]) {
     here_s = second;
     here_v = value;
     last = 0;
+
     /*
-     split given path
+     sprit if it has _ or ,
     */
-    while (1) {
+    while (str_copy != NULL) {
         if(last == 0) {
             str_copy = strtok(str_copy, "_,");
             *first = *str_copy;
             first++;
         }else {
             str_copy = strtok(NULL, "_,");
-            if(str_copy == NULL) {break;}
+            if(str_copy == NULL) { break; }
             if(last % 3 == 0) {
                 *first = *str_copy;
                 first++;
@@ -132,6 +134,9 @@ int main(int argc, const char * argv[]) {
     int e = getNumberOfEdges();
     int n = getNumberOfNodes();
     
+    /*
+     assign initial value
+    */
     int i = 0;
     struct Node *p, *head;
     p = malloc(sizeof(struct Node));
@@ -188,7 +193,7 @@ int main(int argc, const char * argv[]) {
                     p->edge->next = malloc(sizeof(struct Edge));
                     p->edge->next->to = p2;
                     p->edge->next->distance = value[i];
-                    p->edge->next->next = NULL;   //Add
+                    p->edge->next->next = NULL;
                     break;
                 }
             }
@@ -197,14 +202,14 @@ int main(int argc, const char * argv[]) {
     }
     
     /*
-     Implement dijkstra
+     Implement dijkstra!
     */
     struct Node *pp;
     pp = head;
     while (1) {
         int min = INF;
         /*
-         targetnode : Keep node of minimum cost
+         targetnode : Keeping node which has minimum cost
         */
         struct Node *targetnode;
         targetnode = NULL;
@@ -229,7 +234,7 @@ int main(int argc, const char * argv[]) {
         }
         
         /*
-         calculate cost of each node and assgin 'from' node
+         calculate cost of each node which has in edge and assgin 'from' node
         */
         if(targetnode->edge != NULL) {
             if(targetnode->edge->to->cost > targetnode->cost + targetnode->edge->distance) {
@@ -254,6 +259,7 @@ int main(int argc, const char * argv[]) {
          change visited flag
         */
         targetnode->visited = 1;
+        
         visitednum++;
         if(visitednum == n) {
             break;
@@ -267,7 +273,7 @@ int main(int argc, const char * argv[]) {
     struct Node *temp;
     temp = NULL;
     chkfrom = head;
-    printf("The shortest path is ");
+    printf("The shortest path : ");
     while (chkfrom != NULL) {
         if(chkfrom->name == distination) {
             printf("%c←", chkfrom->name);
@@ -296,14 +302,6 @@ int main(int argc, const char * argv[]) {
     first = here_f;
     second = here_s;
     value = here_v;
-//    for(i=0; i<e; i++) {
-//        free(first);
-//        free(second);
-//        free(value);
-//        first++;
-//        second++;
-//        value++;
-//    }
     
     struct Node *q;
     struct Edge *r;
