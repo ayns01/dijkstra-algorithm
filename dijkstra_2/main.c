@@ -158,6 +158,10 @@ int main(int argc, const char * argv[]) {
         p->next = NULL;
     }
     
+    
+    /*
+     assign value to edge
+     */
     for(i=0;i<e;i++) {
         p = head;
         

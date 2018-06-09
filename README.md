@@ -3,7 +3,7 @@
 Implementing a solution for the shortest path problemusing Dijkstra algorithm
 
 ## Condition
-a.The nodeof the graph is not going to be more than 20.
+a.The node of the graph is not going to be more than 20.
 
 b.The names of the nodes are Englishalphabets (Uppercase) like A,B,...
 
