@@ -1,6 +1,6 @@
 # Dijkstra Algorithm using Data Structure in C
 
-Implementing a solution for the shortest path problemusing Dijkstra algorithm
+Implementing a solution for the shortest path problem using Dijkstra algorithm
 
 ## Condition
 a.The node of the graph is not going to be more than 20.

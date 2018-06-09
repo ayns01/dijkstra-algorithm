@@ -16,7 +16,7 @@
 #define MAX_WORD 128
 int getNumberOfNodes(){ return 6; }
 int getNumberOfEdges(){ return 9; }
-char* getNodes(){ return "A,B,C,D,E,F,G"; }
+char* getNodes(){ return "A,B,C,D,E,F"; }
 char* getEdges(){ return "A_B_1,A_C_2,B_C_4,B_D_5,C_E_3,D_E_2,D_F_4,E_B_2,E_F_6"; }
 
 struct Edge
@@ -276,11 +276,14 @@ int main(int argc, const char * argv[]) {
     struct Node *chkfrom;
     struct Node *temp;
     temp = NULL;
+    char reverse[e];
     chkfrom = head;
+    i=0;
     printf("The shortest path : ");
+    printf("%c→", source);
     while (chkfrom != NULL) {
         if(chkfrom->name == distination) {
-            printf("%c←", chkfrom->name);
+            //printf("%c←", chkfrom->name);
             temp = chkfrom;
             totalcost = chkfrom->cost;
             break;
@@ -292,10 +295,16 @@ int main(int argc, const char * argv[]) {
         if(temp->from->name == source) {
             break;
         }
-        printf("%c←", temp->from->name);
+        reverse[i] = temp->from->name;
+        //printf("%c←", temp->from->name);
         temp = temp->from;
+        i++;
     }
-    printf("%c\n", source);
+    for(int j=i-1; j>=0; j--){
+    printf("%c→", reverse[j]);
+    }
+    
+    printf("%c\n", distination);
     printf("Total cost : %d\n", totalcost);
     
     /*
