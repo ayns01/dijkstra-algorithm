@@ -24,7 +24,7 @@ int getNumberOfEdges()
 }
 char* getNodes()
 { 
-    return "A,B,C,D,E,F,G"; //these are the nodes of the graph!
+    return "A,B,C,D,E,F"; //these are the nodes of the graph!
 }
 char* getEdges()
 { 
